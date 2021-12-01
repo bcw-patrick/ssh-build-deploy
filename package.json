@@ -1,0 +1,32 @@
+{
+  "name": "ssh-build-deploy",
+  "version": "1.0.0",
+  "description": "deploy build folder using ssh",
+  "main": "index.js",
+  "repository": "github.com/bcw-patrick/ssh-build-deploy",
+  "author": "Patrick Ma",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.11",
+    "@types/node-ssh": "^7.0.1",
+    "@types/tar": "^6.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "typescript": "^4.5.2"
+  },
+  "bin": {
+    "deploy": "dist/deploy.js"
+  },
+  "scripts": {
+    "lint": "eslint src/** --fix"
+  },
+  "dependencies": {
+    "node-ssh": "^12.0.2",
+    "tar": "^6.1.11"
+  }
+}
