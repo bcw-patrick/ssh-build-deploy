@@ -1,4 +1,4 @@
-# ssh-deploy
+# ssh-build-deploy
 
 a NPM package to simplify deployment of your `build` folder.
 
