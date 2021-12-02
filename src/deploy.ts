@@ -46,6 +46,7 @@ ssh.connect(sshConfig)
     await execBuildCommand(ssh, 'rm latest.tar.gz')
     await execBuildCommand(ssh, `ln -s ${timestamp}.tar.gz latest.tar.gz`)
     await execBuildCommand(ssh, 'tar -zxf latest.tar.gz')
+    await execBuildCommand(ssh, 'rm /var/www/html/* -rf')
     await execBuildCommand(ssh, 'mv build/* /var/www/html -f -b')
 
     ssh.dispose()

@@ -1,6 +1,6 @@
 {
   "name": "ssh-build-deploy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "deploy build folder using ssh",
   "main": "index.js",
   "repository": "github.com/bcw-patrick/ssh-build-deploy",
