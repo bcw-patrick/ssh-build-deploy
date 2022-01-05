@@ -11,7 +11,8 @@ a NPM package to simplify deployment of your `build` folder.
 {
   "host": "ec2-99-99-9999999.us-west-1.compute.amazonaws.com",
   "username": "ubuntu",
-  "privateKey": ".secrets/deploy"
+  "privateKey": ".secrets/deploy",
+  "deployPath": "/var/www"
 }
 ```
 

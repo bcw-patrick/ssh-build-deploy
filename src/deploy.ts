@@ -15,8 +15,20 @@ import fs from 'fs'
 import { Config as SSHConfig, NodeSSH } from 'node-ssh'
 import tar from 'tar'
 
-const configData = fs.readFileSync('deploy.config.json')
-const sshConfig: SSHConfig = JSON.parse(configData.toString())
+type Config = {
+  host: string;
+  username: string;
+  privateKey: string;
+  deployPath: string;
+}
+
+const configData: Config = JSON.parse(
+  fs.readFileSync('deploy.config.json').toString()
+)
+
+const { deployPath }: { deployPath: string } = configData
+
+const sshConfig: SSHConfig = configData
 
 const timestamp = Date.now()
 const dir = '.builds'
@@ -46,8 +58,8 @@ ssh.connect(sshConfig)
     await execBuildCommand(ssh, 'rm latest.tar.gz')
     await execBuildCommand(ssh, `ln -s ${timestamp}.tar.gz latest.tar.gz`)
     await execBuildCommand(ssh, 'tar -zxf latest.tar.gz')
-    await execBuildCommand(ssh, 'rm /var/www/html/* -rf')
-    await execBuildCommand(ssh, 'mv build/* /var/www/html -f -b')
+    await execBuildCommand(ssh, 'rm ${deployPath}/* -rf')
+    await execBuildCommand(ssh, `mv build/* ${deployPath} -f -b`)
 
     ssh.dispose()
     const endTimestamp = Date.now()
